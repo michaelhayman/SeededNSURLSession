@@ -19,6 +19,7 @@
 		974307CB1CEC5F95008A13E1 /* http_failure_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */; };
 		974307CC1CEC5F98008A13E1 /* http_success_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C81CEC579E008A13E1 /* http_success_stubs.bundle */; };
 		974307CD1CEC5F9B008A13E1 /* http_failure_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */; };
+		974307D51CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974307D41CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.swift */; };
 		D45731712904DF84BAF8A0C0 /* Pods_SeededNSURLSession_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75589335D770464434475B0 /* Pods_SeededNSURLSession_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
 			remoteInfo = SeededNSURLSession;
+		};
+		974307D71CEC680F008A13E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = SeededNSURLSession_Example;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -52,6 +60,9 @@
 		974307C41CEC5702008A13E1 /* SeededDataTaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededDataTaskTests.swift; sourceTree = "<group>"; };
 		974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = http_failure_stubs.bundle; sourceTree = "<group>"; };
 		974307C81CEC579E008A13E1 /* http_success_stubs.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = http_success_stubs.bundle; sourceTree = "<group>"; };
+		974307D21CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeededNSURLSession_ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		974307D41CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededNSURLSession_ExampleUITests.swift; sourceTree = "<group>"; };
+		974307D61CEC680F008A13E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A75589335D770464434475B0 /* Pods_SeededNSURLSession_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeededNSURLSession_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53768CFB16DE48B718DD0DA /* Pods-SeededNSURLSession_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeededNSURLSession_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeededNSURLSession_Example/Pods-SeededNSURLSession_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F99C042F0BB9F98C026C0300 /* Pods_SeededNSURLSession_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeededNSURLSession_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +82,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45731712904DF84BAF8A0C0 /* Pods_SeededNSURLSession_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		974307CF1CEC680F008A13E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +121,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SeededNSURLSession */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				974307D31CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				1187FEF803DABD6FD3781120 /* Pods */,
 				3446303CAFD784FDFC7BBE1A /* Frameworks */,
@@ -114,6 +133,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* SeededNSURLSession_Example.app */,
 				607FACE51AFB9204008FA782 /* SeededNSURLSession_Tests.xctest */,
+				974307D21CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +190,15 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		974307D31CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				974307D41CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.swift */,
+				974307D61CEC680F008A13E1 /* Info.plist */,
+			);
+			path = SeededNSURLSession_ExampleUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,13 +243,31 @@
 			productReference = 607FACE51AFB9204008FA782 /* SeededNSURLSession_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		974307D11CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 974307D91CEC680F008A13E1 /* Build configuration list for PBXNativeTarget "SeededNSURLSession_ExampleUITests" */;
+			buildPhases = (
+				974307CE1CEC680F008A13E1 /* Sources */,
+				974307CF1CEC680F008A13E1 /* Frameworks */,
+				974307D01CEC680F008A13E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				974307D81CEC680F008A13E1 /* PBXTargetDependency */,
+			);
+			name = SeededNSURLSession_ExampleUITests;
+			productName = SeededNSURLSession_ExampleUITests;
+			productReference = 974307D21CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -229,6 +276,10 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+					974307D11CEC680F008A13E1 = {
+						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -248,6 +299,7 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* SeededNSURLSession_Example */,
 				607FACE41AFB9204008FA782 /* SeededNSURLSession_Tests */,
+				974307D11CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,6 +323,13 @@
 			files = (
 				974307CD1CEC5F9B008A13E1 /* http_failure_stubs.bundle in Resources */,
 				974307CA1CEC579E008A13E1 /* http_success_stubs.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		974307D01CEC680F008A13E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +447,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		974307CE1CEC680F008A13E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				974307D51CEC680F008A13E1 /* SeededNSURLSession_ExampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -395,6 +462,11 @@
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* SeededNSURLSession_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+		974307D81CEC680F008A13E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* SeededNSURLSession_Example */;
+			targetProxy = 974307D71CEC680F008A13E1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -558,6 +630,33 @@
 			};
 			name = Release;
 		};
+		974307DA1CEC680F008A13E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = SeededNSURLSession_ExampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mh.SeededNSURLSession-ExampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SeededNSURLSession_Example;
+			};
+			name = Debug;
+		};
+		974307DB1CEC680F008A13E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = SeededNSURLSession_ExampleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "mh.SeededNSURLSession-ExampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SeededNSURLSession_Example;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -587,6 +686,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		974307D91CEC680F008A13E1 /* Build configuration list for PBXNativeTarget "SeededNSURLSession_ExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				974307DA1CEC680F008A13E1 /* Debug */,
+				974307DB1CEC680F008A13E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

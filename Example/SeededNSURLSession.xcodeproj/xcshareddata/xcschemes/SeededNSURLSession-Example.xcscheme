@@ -52,6 +52,16 @@
                ReferencedContainer = "container:SeededNSURLSession.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "974307D11CEC680F008A13E1"
+               BuildableName = "SeededNSURLSession_ExampleUITests.xctest"
+               BlueprintName = "SeededNSURLSession_ExampleUITests"
+               ReferencedContainer = "container:SeededNSURLSession.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -19,16 +19,11 @@ let InlineResponse = "inline_response"
         self.jsonBundle = jsonBundle
     }
 
-    func retrieveBundle(bundleName bundleName: String) -> NSBundle? {
-        guard let bundlePath = NSBundle.mainBundle().pathForResource(bundleName, ofType: "bundle") else { return nil }
-        let bundle = NSBundle(path: bundlePath)
-        return bundle
-    }
-
-    func retrieveMappingsForBundle(bundle bundle: NSBundle) -> [NSDictionary]? {
-        guard let mappingFilePath = bundle.pathForResource(MappingFilename, ofType: "plist") else { return nil }
-        guard let mappings = NSArray(contentsOfFile: mappingFilePath) as? [NSDictionary] else { return nil }
-        return mappings
+    public class func defaultSession() -> NSURLSession {
+        if UIStubber.isRunningAutomationTests() {
+            return UIStubber.stubAPICallsSession()
+        }
+        return NSURLSession.sharedSession()
     }
 
     override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
@@ -79,5 +74,17 @@ let InlineResponse = "inline_response"
         } else {
             return super.dataTaskWithRequest(request, completionHandler: completionHandler)
         }
+    }
+
+    func retrieveBundle(bundleName bundleName: String) -> NSBundle? {
+        guard let bundlePath = NSBundle.mainBundle().pathForResource(bundleName, ofType: "bundle") else { return nil }
+        let bundle = NSBundle(path: bundlePath)
+        return bundle
+    }
+
+    func retrieveMappingsForBundle(bundle bundle: NSBundle) -> [NSDictionary]? {
+        guard let mappingFilePath = bundle.pathForResource(MappingFilename, ofType: "plist") else { return nil }
+        guard let mappings = NSArray(contentsOfFile: mappingFilePath) as? [NSDictionary] else { return nil }
+        return mappings
     }
 }
