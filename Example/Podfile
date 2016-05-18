@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SeededNSURLSession_Example' do
+  pod 'SeededNSURLSession', :path => '../'
+
+  target 'SeededNSURLSession_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
