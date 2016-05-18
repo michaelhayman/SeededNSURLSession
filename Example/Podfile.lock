@@ -1,0 +1,16 @@
+PODS:
+  - SeededNSURLSession (0.1.0)
+
+DEPENDENCIES:
+  - SeededNSURLSession (from `../`)
+
+EXTERNAL SOURCES:
+  SeededNSURLSession:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SeededNSURLSession: 1dfcb72713a82bcfaaedffdec74881241d283203
+
+PODFILE CHECKSUM: b9bd4df7d77aeba4e58e7c58e21155db20a65605
+
+COCOAPODS: 1.0.0

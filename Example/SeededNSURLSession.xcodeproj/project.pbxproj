@@ -12,8 +12,13 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* SeededURLSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* SeededURLSessionTests.swift */; };
 		91485D64176D530BCE6F8A08 /* Pods_SeededNSURLSession_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99C042F0BB9F98C026C0300 /* Pods_SeededNSURLSession_Example.framework */; };
+		974307C61CEC5707008A13E1 /* SeededDataTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974307C41CEC5702008A13E1 /* SeededDataTaskTests.swift */; };
+		974307CA1CEC579E008A13E1 /* http_success_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C81CEC579E008A13E1 /* http_success_stubs.bundle */; };
+		974307CB1CEC5F95008A13E1 /* http_failure_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */; };
+		974307CC1CEC5F98008A13E1 /* http_success_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C81CEC579E008A13E1 /* http_success_stubs.bundle */; };
+		974307CD1CEC5F9B008A13E1 /* http_failure_stubs.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */; };
 		D45731712904DF84BAF8A0C0 /* Pods_SeededNSURLSession_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75589335D770464434475B0 /* Pods_SeededNSURLSession_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +47,11 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SeededNSURLSession_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeededNSURLSession_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* SeededURLSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeededURLSessionTests.swift; sourceTree = "<group>"; };
 		84DEB9584C84326E44154EE7 /* Pods-SeededNSURLSession_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeededNSURLSession_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeededNSURLSession_Example/Pods-SeededNSURLSession_Example.release.xcconfig"; sourceTree = "<group>"; };
+		974307C41CEC5702008A13E1 /* SeededDataTaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeededDataTaskTests.swift; sourceTree = "<group>"; };
+		974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = http_failure_stubs.bundle; sourceTree = "<group>"; };
+		974307C81CEC579E008A13E1 /* http_success_stubs.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = http_success_stubs.bundle; sourceTree = "<group>"; };
 		A75589335D770464434475B0 /* Pods_SeededNSURLSession_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeededNSURLSession_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53768CFB16DE48B718DD0DA /* Pods-SeededNSURLSession_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeededNSURLSession_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeededNSURLSession_Example/Pods-SeededNSURLSession_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F99C042F0BB9F98C026C0300 /* Pods_SeededNSURLSession_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeededNSURLSession_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +121,8 @@
 		607FACD21AFB9204008FA782 /* Example for SeededNSURLSession */ = {
 			isa = PBXGroup;
 			children = (
+				974307C71CEC579E008A13E1 /* http_failure_stubs.bundle */,
+				974307C81CEC579E008A13E1 /* http_success_stubs.bundle */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -135,7 +145,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				974307C41CEC5702008A13E1 /* SeededDataTaskTests.swift */,
+				607FACEB1AFB9204008FA782 /* SeededURLSessionTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -246,6 +257,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				974307CC1CEC5F98008A13E1 /* http_success_stubs.bundle in Resources */,
+				974307CB1CEC5F95008A13E1 /* http_failure_stubs.bundle in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -256,6 +269,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				974307CD1CEC5F9B008A13E1 /* http_failure_stubs.bundle in Resources */,
+				974307CA1CEC579E008A13E1 /* http_success_stubs.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +383,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				974307C61CEC5707008A13E1 /* SeededDataTaskTests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* SeededURLSessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,10 +530,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36C006AABF68FF3F9E065DFF /* Pods-SeededNSURLSession_Tests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -526,6 +540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeededNSURLSession_Example.app/SeededNSURLSession_Example";
 			};
 			name = Debug;
 		};
@@ -533,14 +548,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 30186D4EB6F431F9B54A5F74 /* Pods-SeededNSURLSession_Tests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeededNSURLSession_Example.app/SeededNSURLSession_Example";
 			};
 			name = Release;
 		};
