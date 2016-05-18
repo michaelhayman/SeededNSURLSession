@@ -27,28 +27,13 @@ let InlineResponse = "inline_response"
     }
 
     override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
-        guard let bundle = retrieveBundle(bundleName: jsonBundle) else { return super.dataTaskWithRequest(request, completionHandler: completionHandler) }
-        guard let url = request.URL else { return super.dataTaskWithRequest(request, completionHandler: completionHandler) }
+        guard let bundle = retrieveBundle(bundleName: jsonBundle) else { return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: completionHandler) }
+        guard let url = request.URL else { return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: completionHandler) }
 
         let mappings = retrieveMappingsForBundle(bundle: bundle)
 
         let mapping = mappings?.filter({ (mapping) -> Bool in
-            guard let regexPattern = mapping[MatchingURL] as? String else { return false }
-
-            var regex: NSRegularExpression
-
-            do {
-                regex = try NSRegularExpression(pattern: regexPattern, options: [])
-            } catch {
-                print(error)
-                return false
-            }
-
-            if regex.firstMatchInString(url.absoluteString, options: [], range: NSMakeRange(0, url.absoluteString.characters.count)) != nil {
-                return true
-            }
-
-            return false
+            return findMatch(path: mapping[MatchingURL], url: url.absoluteString)
         }).first
 
         if let mapping = mapping,
@@ -72,8 +57,29 @@ let InlineResponse = "inline_response"
             task.nextResponse = response
             return task
         } else {
-            return super.dataTaskWithRequest(request, completionHandler: completionHandler)
+            return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: completionHandler)
         }
+    }
+
+    public func findMatch(path path: AnyObject?, url: String) -> Bool {
+        guard let regexPattern = path as? String else { return false }
+
+        var regex: NSRegularExpression
+
+        do {
+            regex = try NSRegularExpression(pattern: regexPattern, options: [])
+        } catch {
+            print(error)
+            return false
+        }
+
+        let modifiedPattern = regexPattern.stringByAppendingString("$")
+
+        if let match = url.rangeOfString(modifiedPattern, options: .RegularExpressionSearch) {
+            return true
+        }
+
+        return false
     }
 
     func retrieveBundle(bundleName bundleName: String) -> NSBundle? {
