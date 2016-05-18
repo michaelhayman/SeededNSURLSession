@@ -69,8 +69,6 @@ class SeededDataTaskTests: XCTestCase {
 
     func testSpecificFailingStub() {
         let session = SeededURLSession(jsonBundle: "http_failure_stubs")
-        //HTTPStubber.applySingleStubInBundleWithName(bundle: "http_failure_stubs", resource: "POST_SignUp_422")
-        //XCTAssertEqual(1, OHHTTPStubs.allStubs().count)
 
         guard let requestURL = NSURL(string: "https://example.com/sign_up") else {
             XCTFail("Invalid URL.")

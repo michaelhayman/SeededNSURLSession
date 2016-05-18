@@ -1,7 +1,7 @@
 //
 //  SeededURLSession.swift
 //
-//  Created by Michael Hayman on 2016-05-16.
+//  Created by Michael Hayman on 2016-05-18.
 
 typealias DataCompletion = (NSData?, NSURLResponse?, NSError?) -> Void
 
@@ -19,26 +19,27 @@ let InlineResponse = "inline_response"
         self.jsonBundle = jsonBundle
     }
 
-    class func retrieveBundle(bundleName bundleName: String) -> NSBundle? {
-        let bundlePath = NSBundle.mainBundle().pathForResource(bundleName, ofType: "bundle")!
+    func retrieveBundle(bundleName bundleName: String) -> NSBundle? {
+        guard let bundlePath = NSBundle.mainBundle().pathForResource(bundleName, ofType: "bundle") else { return nil }
         let bundle = NSBundle(path: bundlePath)
         return bundle
     }
 
-    class func retrieveMappingsForBundle(bundle bundle: NSBundle) -> [NSDictionary]? {
-        let mappingFilePath = bundle.pathForResource(MappingFilename, ofType: "plist")
-        let mappings = NSArray(contentsOfFile: mappingFilePath!) as! [NSDictionary]
+    func retrieveMappingsForBundle(bundle bundle: NSBundle) -> [NSDictionary]? {
+        guard let mappingFilePath = bundle.pathForResource(MappingFilename, ofType: "plist") else { return nil }
+        guard let mappings = NSArray(contentsOfFile: mappingFilePath) as? [NSDictionary] else { return nil }
         return mappings
     }
 
     override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
-        let bundle = SeededURLSession.retrieveBundle(bundleName: jsonBundle)
-        let mappings = SeededURLSession.retrieveMappingsForBundle(bundle: bundle!)
+        guard let bundle = retrieveBundle(bundleName: jsonBundle) else { return super.dataTaskWithRequest(request, completionHandler: completionHandler) }
+        guard let url = request.URL else { return super.dataTaskWithRequest(request, completionHandler: completionHandler) }
 
-        // go through mappings and match by url
+        let mappings = retrieveMappingsForBundle(bundle: bundle)
 
         let mapping = mappings?.filter({ (mapping) -> Bool in
-            let regexPattern = mapping[MatchingURL] as! String
+            guard let regexPattern = mapping[MatchingURL] as? String else { return false }
+
             var regex: NSRegularExpression
 
             do {
@@ -48,31 +49,35 @@ let InlineResponse = "inline_response"
                 return false
             }
 
-            if regex.firstMatchInString(request.URL!.absoluteString, options: [], range: NSMakeRange(0, request.URL!.absoluteString.characters.count)) != nil {
+            if regex.firstMatchInString(url.absoluteString, options: [], range: NSMakeRange(0, url.absoluteString.characters.count)) != nil {
                 return true
             }
+
             return false
         }).first
 
-        let jsonFileName = mapping![JSONFile] as! String
-        let path = bundle!.pathForResource(jsonFileName, ofType: "json")
+        if let mapping = mapping,
+            jsonFileName = mapping[JSONFile] as? String,
+            statusString = mapping[StatusCode] as? String,
+            statusCode = Int(statusString),
+            path = bundle.pathForResource(jsonFileName, ofType: "json") {
 
-        let data = NSData(contentsOfFile: path!)
+            let data = NSData(contentsOfFile: path)
 
-        let statusCodeString = mapping![StatusCode] as! String
-        let statusCode = Int(statusCodeString)!
+            let task = SeededDataTask(url: url, completion: completionHandler)
 
-        let task = SeededDataTask(url: request.URL!, completion: completionHandler)
+            if statusCode == 422 || statusCode == 500 {
+                let error = NSError(domain: NSURLErrorDomain, code: Int(CFNetworkErrors.CFURLErrorCannotLoadFromNetwork.rawValue), userInfo: nil)
+                task.nextError = error
+            }
 
-        if statusCode == 422 || statusCode == 500 {
-            let error = NSError(domain: NSURLErrorDomain, code: Int(CFNetworkErrors.CFURLErrorCannotLoadFromNetwork.rawValue), userInfo: nil)
-            task.nextError = error
+            let response = NSHTTPURLResponse(URL: url, statusCode: statusCode, HTTPVersion: nil, headerFields: nil)
+
+            task.data = data
+            task.nextResponse = response
+            return task
+        } else {
+            return super.dataTaskWithRequest(request, completionHandler: completionHandler)
         }
-
-        let response = NSHTTPURLResponse(URL: request.URL!, statusCode: statusCode, HTTPVersion: nil, headerFields: nil)
-
-        task.data = data
-        task.nextResponse = response
-        return task
     }
 }

@@ -1,7 +1,7 @@
 //
 //  SeededDataTask.swift
 //
-//  Created by Michael Hayman on 2016-05-16.
+//  Created by Michael Hayman on 2016-05-18.
 
 @objc public class SeededDataTask: NSURLSessionDataTask {
     private let url: NSURL
@@ -17,10 +17,6 @@
     }
 
     override public func resume() {
-        // load all the stubs
-        // find the most relevant one, based on the URL
-        // return that as the response otherwise return nothing?
-
         completion(data, nextResponse, nextError)
     }
 }
