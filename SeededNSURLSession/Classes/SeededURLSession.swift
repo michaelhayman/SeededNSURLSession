@@ -64,15 +64,6 @@ let InlineResponse = "inline_response"
     public func findMatch(path path: AnyObject?, url: String) -> Bool {
         guard let regexPattern = path as? String else { return false }
 
-        var regex: NSRegularExpression
-
-        do {
-            regex = try NSRegularExpression(pattern: regexPattern, options: [])
-        } catch {
-            print(error)
-            return false
-        }
-
         let modifiedPattern = regexPattern.stringByAppendingString("$")
 
         if let match = url.rangeOfString(modifiedPattern, options: .RegularExpressionSearch) {
