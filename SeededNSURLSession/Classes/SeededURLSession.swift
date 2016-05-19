@@ -66,7 +66,7 @@ let InlineResponse = "inline_response"
 
         let modifiedPattern = regexPattern.stringByAppendingString("$")
 
-        if let match = url.rangeOfString(modifiedPattern, options: .RegularExpressionSearch) {
+        if let _ = url.rangeOfString(modifiedPattern, options: .RegularExpressionSearch) {
             return true
         }
 
