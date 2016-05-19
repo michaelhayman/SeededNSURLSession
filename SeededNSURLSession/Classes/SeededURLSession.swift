@@ -15,8 +15,8 @@ let InlineResponse = "inline_response"
 @objc public class SeededURLSession: NSURLSession {
     let jsonBundle: String!
 
-    public init(jsonBundle jsonBundle: String) {
-        self.jsonBundle = jsonBundle
+    public init(jsonBundle named: String) {
+        self.jsonBundle = named
     }
 
     public class func defaultSession() -> NSURLSession {
