@@ -1,0 +1,6 @@
+framework module SeededNSURLSession {
+  umbrella header "SeededNSURLSession-umbrella.h"
+
+  export *
+  module * { export * }
+}
