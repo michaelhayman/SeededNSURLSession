@@ -33,16 +33,24 @@ let InlineResponse = "inline_response"
         let mappings = retrieveMappingsForBundle(bundle: bundle)
 
         let mapping = mappings?.filter({ (mapping) -> Bool in
-            return findMatch(path: mapping[MatchingURL], url: url.absoluteString)
+            let httpMethodMatch = request.HTTPMethod == mapping[HTTPMethod] as! String
+            let urlMatch = findMatch(path: mapping[MatchingURL], url: url.absoluteString)
+            return urlMatch && httpMethodMatch
         }).first
 
         if let mapping = mapping,
             jsonFileName = mapping[JSONFile] as? String,
             statusString = mapping[StatusCode] as? String,
-            statusCode = Int(statusString),
-            path = bundle.pathForResource(jsonFileName, ofType: "json") {
+            statusCode = Int(statusString) {
 
-            let data = NSData(contentsOfFile: path)
+            var data: NSData?
+            if let path = bundle.pathForResource(jsonFileName, ofType: "json") {
+                data = NSData(contentsOfFile: path)
+            } else {
+                if let response = mapping[InlineResponse] as? String {
+                    data = response.dataUsingEncoding(NSUTF8StringEncoding)
+                }
+            }
 
             let task = SeededDataTask(url: url, completion: completionHandler)
 
