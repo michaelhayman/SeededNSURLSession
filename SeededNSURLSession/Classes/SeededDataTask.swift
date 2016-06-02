@@ -3,6 +3,8 @@
 //
 //  Created by Michael Hayman on 2016-05-18.
 
+public typealias DataCompletion = (NSData?, NSURLResponse?, NSError?) -> Void
+
 @objc public class SeededDataTask: NSURLSessionDataTask {
     private let url: NSURL
     private let completion: DataCompletion

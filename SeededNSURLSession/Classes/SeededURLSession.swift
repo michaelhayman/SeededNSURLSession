@@ -3,8 +3,6 @@
 //
 //  Created by Michael Hayman on 2016-05-18.
 
-typealias DataCompletion = (NSData?, NSURLResponse?, NSError?) -> Void
-
 let MappingFilename = "stubRules"
 let MatchingURL = "matching_url"
 let JSONFile = "json_file"
