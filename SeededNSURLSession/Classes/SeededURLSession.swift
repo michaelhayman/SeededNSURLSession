@@ -30,8 +30,8 @@ let InlineResponse = "inline_response"
     }
 
     override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
-        guard let bundle = retrieveBundle(bundleName: jsonBundle) else { return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: completionHandler) }
-        guard let url = request.URL else { return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: completionHandler) }
+        guard let url = request.URL else { return errorTask(request.URL, reason: "No URL specified", completionHandler: completionHandler) }
+        guard let bundle = retrieveBundle(bundleName: jsonBundle) else { return errorTask(url, reason: "No such bundle '\(jsonBundle)' found.", completionHandler: completionHandler) }
 
         let mappings = retrieveMappingsForBundle(bundle: bundle)
 
@@ -68,7 +68,7 @@ let InlineResponse = "inline_response"
             task.nextResponse = response
             return task
         } else {
-            return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: completionHandler)
+            return errorTask(url, reason: "No mapping found.", completionHandler: completionHandler)
         }
     }
 
@@ -94,5 +94,27 @@ let InlineResponse = "inline_response"
         guard let mappingFilePath = bundle.pathForResource(MappingFilename, ofType: "plist") else { return nil }
         guard let mappings = NSArray(contentsOfFile: mappingFilePath) as? [NSDictionary] else { return nil }
         return mappings
+    }
+}
+
+// MARK - Error cases
+extension SeededURLSession {
+    func errorTask(url: NSURL?, reason: String, completionHandler: DataCompletion) -> SeededDataTask {
+        var assignedUrl: NSURL! = url == nil ? NSURL(string: "http://www.example.com/") : url
+
+        let task = SeededDataTask(url: assignedUrl, completion: completionHandler)
+        task.nextError = NSError(reason: reason)
+        return task
+    }
+}
+
+extension NSError {
+    convenience init(reason: String) {
+        let errorInfo = [
+            NSLocalizedDescriptionKey: reason,
+            NSLocalizedFailureReasonErrorKey: reason,
+            NSLocalizedRecoverySuggestionErrorKey: ""
+        ]
+        self.init(domain: "SeededURLSession", code: 55, userInfo: errorInfo)
     }
 }
