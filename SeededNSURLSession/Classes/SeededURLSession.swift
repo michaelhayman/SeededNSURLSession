@@ -19,11 +19,16 @@ let InlineResponse = "inline_response"
         self.jsonBundle = named
     }
 
-    public class func defaultSession() -> NSURLSession {
+    public class func defaultSession(queue: NSOperationQueue = NSOperationQueue.mainQueue()) -> NSURLSession {
         if UIStubber.isRunningAutomationTests() {
             return UIStubber.stubAPICallsSession()
         }
-        return NSURLSession.sharedSession()
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate: nil,
+            delegateQueue: queue)
+
+        return session
     }
 
     override public func dataTaskWithRequest(request: NSURLRequest, completionHandler: (NSData?, NSURLResponse?, NSError?) -> Void) -> NSURLSessionDataTask {
