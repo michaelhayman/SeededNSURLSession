@@ -1,0 +1,15 @@
+machine:
+  xcode:
+    version: "7.3"
+  environment:
+    XCODE_SCHEME: 'SeededURLSession'
+
+test:
+  override:
+   - scan
+     --clean
+     --scheme $XCODE_SCHEME
+     --output_directory $CIRCLE_ARTIFACTS
+     --code_coverage 1
+     --device "iPhone 6 (9.3)"
+
